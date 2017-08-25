@@ -1,0 +1,45 @@
+<ul>
+  <li *ngFor="let candy of doces; let i=index; let last = last">
+    {{ i }}. {{ candy.doce }} <strong *ngIf=last> I am last </strong>
+  </li>
+</ul>
+<p>It certainaly does!
+<hr>
+<div *ngIf="title; then truthtempl else falsetempl">
+  This will not appear.
+</div>
+
+<ng-template #truthtempl>template verdadeiro</ng-template>
+<ng-template #falsetempl>template falso</ng-template>
+<p><hr>
+<div [ngSwitch]="title">
+	<div *ngSwitchCase="'baseball'">// Display baseball content</div>
+	<div *ngSwitchCase="'doces'">// Display candies content</div>
+	<div *ngSwitchCase="'futebol'">// Display futebol content</div>
+	<div *ngSwitchDefault>// No matches found</div>
+</div>
+<p><hr>
+<h1 #myH1>My Title</h1>
+<p>{{ myH1.innerText }}</p>
+<p><hr>
+<input #count value="my value" (keyup)="0">
+<p>{{ count.value.length }}</p>
+<button (click)=myFunc(count)>My button</button>
+<p><hr>
+<p [class.danger]="alertStatus('danger')">Class Binding example 1</p>
+<p><hr>
+<p [ngClass]="myClasses">Class Binding example 2</p>
+<p><hr>
+<p [ngStyle]="ngStyles">Style Binding example 1</p>
+<p><hr>
+<p [style.font-weight]="myWeight">Style Binding example 2</p>
+<p><hr>
+<p [style.font-weight]="newWeight ? 'bold' : 'normal'">Style Binding example 3</p>
+<p><hr>
+<img [src]="logoUrl">
+<button [disabled]="buttonState">Purchase</button>
+<p><hr>
+<button (click)="toggleLogo()">Toggle Logo</button><br>
+<img [src]="logoUrl" *ngIf="buttonState">
+<p><input type="text" name="texto" (keyup.enter)="keyPress($event.target.value)">
+<p>{{ typed }}
